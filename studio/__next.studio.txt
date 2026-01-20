@@ -1,4 +1,4 @@
 1:"$Sreact.fragment"
-2:I[28552,["/_next/static/chunks/88a88e56162a9081.js","/_next/static/chunks/892eeb32549900b8.js"],"default"]
-3:I[22658,["/_next/static/chunks/88a88e56162a9081.js","/_next/static/chunks/892eeb32549900b8.js"],"default"]
-0:{"buildId":"iFsQg4o8BhZKkMxsB0Y5N","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
+2:I[28552,["/Nianmanga/_next/static/chunks/88a88e56162a9081.js","/Nianmanga/_next/static/chunks/892eeb32549900b8.js"],"default"]
+3:I[22658,["/Nianmanga/_next/static/chunks/88a88e56162a9081.js","/Nianmanga/_next/static/chunks/892eeb32549900b8.js"],"default"]
+0:{"buildId":"RhFGqsy5_AZkQkq9jtS6E","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
