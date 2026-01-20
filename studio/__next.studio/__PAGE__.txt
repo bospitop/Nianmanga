@@ -1,9 +1,9 @@
 1:"$Sreact.fragment"
 2:I[62099,["/Nianmanga/_next/static/chunks/88a88e56162a9081.js","/Nianmanga/_next/static/chunks/892eeb32549900b8.js"],"ClientPageRoot"]
-3:I[49543,["/Nianmanga/_next/static/chunks/fbc6c7cce45f1594.js","/Nianmanga/_next/static/chunks/3c1c68c9392015e3.js","/Nianmanga/_next/static/chunks/704d8f3845f89f02.js"],"default"]
+3:I[49543,["/Nianmanga/_next/static/chunks/fbc6c7cce45f1594.js","/Nianmanga/_next/static/chunks/3c1c68c9392015e3.js","/Nianmanga/_next/static/chunks/26ab1c65b31ccfdc.js"],"default"]
 6:I[16096,["/Nianmanga/_next/static/chunks/88a88e56162a9081.js","/Nianmanga/_next/static/chunks/892eeb32549900b8.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
-0:{"buildId":"ll-7aSDUoAwmrWo1XUsGE","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/Nianmanga/_next/static/chunks/3c1c68c9392015e3.js","async":true}],["$","script","script-1",{"src":"/Nianmanga/_next/static/chunks/704d8f3845f89f02.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"dIg1jpp1-2I11K2NyHIOU","rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","script","script-0",{"src":"/Nianmanga/_next/static/chunks/3c1c68c9392015e3.js","async":true}],["$","script","script-1",{"src":"/Nianmanga/_next/static/chunks/26ab1c65b31ccfdc.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"loading":null,"isPartial":false}
 4:{}
 5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
 8:null
