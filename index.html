@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nianmanga - Cloud Translator</title>
+    <!-- Google Fonts: Outfit + Sarabun -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;800&family=Sarabun:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            /* Violet */
+            --accent: #f43f5e;
+            /* Rose */
+            --bg: #0f172a;
+            /* Slate 900 */
+            --surface: #1e293b;
+            /* Slate 800 */
+            --text: #f8fafc;
+            --glass: rgba(30, 41, 59, 0.7);
+        }
+
+        body {
+            font-family: 'Sarabun', 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            margin-top: 2rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover,
+        .upload-area.dragover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            padding: 1rem 2rem;
+            color: white;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: filter 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        button:hover {
+            filter: brightness(1.2);
+        }
+
+        button:disabled {
+            filter: grayscale(1);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .preview-container {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .preview-box {
+            position: relative;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            max-height: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 400px;
+            display: block;
+        }
+
+        .status {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .status.processing {
+            background: rgba(234, 179, 8, 0.2);
+            color: #facc15;
+            display: block;
+        }
+
+        .status.success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            display: block;
+        }
+
+        .status.error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            display: block;
+        }
+
+        .image-labels {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>NIAN MANGA 🎌</h1>
+    <p style="opacity: 0.7;">AI-Powered Manhwa & Manga Translator</p>
+
+    <div class="container">
+        <!-- Control Panel -->
+        <div class="card">
+            <h2 style="margin-top: 0;">Upload Image</h2>
+            <div id="dropZone" class="upload-area">
+                <p style="font-size: 2rem; margin: 0;">📂</p>
+                <p>Click or Drag & Drop Manhwa Image here</p>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <label>Source Type:</label>
+                <select id="sourceType"
+                    style="width: 100%; padding: 0.8rem; border-radius: 0.5rem; background: rgba(0,0,0,0.3); color: white; border: 1px solid rgba(255,255,255,0.2); margin-top: 0.5rem;">
+                    <option value="auto">Auto Detect</option>
+                    <option value="manhwa">Manhwa / Webtoon (Color)</option>
+                    <option value="manga">Manga (B&W)</option>
+                    <option value="manhua">Manhua (Chinese Color)</option>
+                </select>
+            </div>
+
+            <button id="translateBtn" disabled>✨ Translate Now</button>
+            <div id="statusMessage" class="status"></div>
+        </div>
+
+        <!-- Result Panel -->
+        <div class="card" id="resultCard" style="display: none;">
+            <h2>Translation Result</h2>
+            <div class="image-labels">
+                <span>Original</span>
+                <span>Translated</span>
+            </div>
+            <div class="preview-container">
+                <div class="preview-box">
+                    <img id="originalPreview" alt="Original">
+                </div>
+                <div class="preview-box">
+                    <img id="translatedPreview" alt="Translated">
+                </div>
+            </div>
+            <a id="downloadLink" href="#" download="translated_manhwa.png">
+                <button style="background: linear-gradient(135deg, #10b981, #3b82f6); margin-top: 1rem;">⬇️ Download
+                    Image</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURATION
+        const API_BASE_url = 'https://guessingly-ovular-charleen.ngrok-free.dev'; // Pointing to your Ngrok Tunnel
+
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('fileInput');
+        const translateBtn = document.getElementById('translateBtn');
+        const statusMsg = document.getElementById('statusMessage');
+        const originalPreview = document.getElementById('originalPreview');
+        const translatedPreview = document.getElementById('translatedPreview');
+        const resultCard = document.getElementById('resultCard');
+        const downloadLink = document.getElementById('downloadLink');
+
+        let currentFile = null;
+
+        // File Selection Logic
+        dropZone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFileSelect);
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length) {
+                handleFileSelect({ target: { files: e.dataTransfer.files } });
+            }
+        });
+
+        function handleFileSelect(e) {
+            const file = e.target.files[0];
+            if (file) {
+                currentFile = file;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    originalPreview.src = e.target.result;
+                    // Reset result
+                    resultCard.style.display = 'block';
+                    translatedPreview.style.display = 'none'; // Hide until ready
+                    translatedPreview.src = '';
+                    translateBtn.disabled = false;
+                    translateBtn.innerText = '✨ Translate Now';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Translation Logic
+        translateBtn.addEventListener('click', async () => {
+            if (!currentFile) return;
+
+            // UI Loading State
+            translateBtn.disabled = true;
+            translateBtn.innerText = '⏳ Translating... (This takes 30-60s)';
+            statusMsg.className = 'status processing';
+            statusMsg.innerText = 'Sending to AI Backend on your PC...';
+            translatedPreview.style.display = 'none';
+
+            const formData = new FormData();
+            formData.append('image', currentFile);
+            formData.append('sourceType', document.getElementById('sourceType').value);
+
+            try {
+                // 1. Upload & Translate Request
+                const response = await fetch(`${API_BASE_url}/translate`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) throw new Error('API Error: ' + response.statusText);
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // 2. Success!
+                    statusMsg.className = 'status success';
+                    statusMsg.innerText = '✅ Translation Complete!';
+
+                    // Display Result
+                    // Note: Ngrok URL might need /static path if set up, but let's assume base64 or direct URL
+                    // The API usually returns a relative path or a full URL.
+                    // For safety in this demo, let's assume the API returns the image URL.
+
+                    // IF your API returns a local path, we need to construct the URL.
+                    // Let's rely on the API returning a usable URL or Base64.
+                    // Based on previous code, `translateImage` saves to disk. The /translate endpoint 
+                    // should return a URL to access it.
+
+                    // Quick fix for this demo: ensure the image src points to the API static serve
+                    // Assuming /results/filename.png
+
+                    const resultUrl = `${API_BASE_url}${data.outputUrl}`;
+                    translatedPreview.src = resultUrl;
+                    translatedPreview.style.display = 'block';
+                    downloadLink.href = resultUrl;
+
+                    translateBtn.innerText = '✨ Translate Another';
+                    translateBtn.disabled = false;
+                } else {
+                    throw new Error(data.error || 'Unknown error');
+                }
+
+            } catch (error) {
+                console.error(error);
+                statusMsg.className = 'status error';
+                statusMsg.innerText = '❌ Failed: ' + error.message;
+                translateBtn.disabled = false;
+                translateBtn.innerText = 'Retry';
+            }
+        });
+    </script>
+</body>
+
+</html>
