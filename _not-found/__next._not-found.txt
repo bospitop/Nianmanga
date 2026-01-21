@@ -1,4 +1,4 @@
 1:"$Sreact.fragment"
 2:I[28552,["/Nianmanga/_next/static/chunks/88a88e56162a9081.js","/Nianmanga/_next/static/chunks/892eeb32549900b8.js"],"default"]
 3:I[22658,["/Nianmanga/_next/static/chunks/88a88e56162a9081.js","/Nianmanga/_next/static/chunks/892eeb32549900b8.js"],"default"]
-0:{"buildId":"Qk6wjQm-9z3Yg_JIXpYFJ","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"aGOXnHA0uf0jCD-FgxTZ4","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
