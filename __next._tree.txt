@@ -6,4 +6,4 @@
 :HL["/Nianmanga/_next/static/media/bfd813093b8ca1bb-s.p.88bd3266.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Nianmanga/_next/static/media/e9ed0bc71a38d6c1-s.p.084aa6b5.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/Nianmanga/_next/static/media/f304c3cf3765fb5f-s.p.607a00cf.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"buildId":"Gfm9gTpZ2LfISGOy61xfB","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"iCHXc1nqdybaxbULc5kvq","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
